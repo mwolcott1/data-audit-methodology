@@ -1,0 +1,82 @@
+1                                     The WPS System 22:50 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+2         %include "varlen.mac";
+Start of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+3       +  %macro varlen (var);
+4       +     l_&var. = length (&var.);
+5       +  %mend;
+End of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+6         
+7         title "NORMALIZED";
+8         
+9         data normalized;
+10           infile '../DATA/RAW/normalized.csv' dsd dlm = ',' lrecl = 1000 termstr = CRLF
+10      !  firstobs = 2 truncover;
+11           input
+12              p_code : $400.
+13              vdc_name : $400.
+14              district : $400.
+15              region : $400.
+16              mmi_max
+17              mmi_unlog
+18              mmi_max
+19              pop_2011
+20              pop_2011_norm
+21              popden_2011
+22              tmp_popden_2011_norm : $400. /* there are character values - turns out the
+22      ! y are "#NUM!" */
+23              hse_wall_percent_high_risk
+24              hse_wall_percent_high_risk_norm
+25              hse_roof_percent_high_risk
+26              hse_roof_percent_high_risk_norm
+27              human_poverty_index
+28              human_poverty_index_norm;
+29           %varlen (p_code);
+30           %varlen (vdc_name);
+31           %varlen (district);
+32           %varlen (region);
+33           %varlen (tmp_popden_2011_norm);
+34           keep l_:;
+35           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/normalized.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/normalized.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=450277,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=1000, Recfm=V
+
+NOTE: 3985 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/normalized.csv'
+      The minimum record length was 97
+      The maximum record length was 132
+NOTE: Data set "WORK.normalized" has 3985 observation(s) and 5 variable(s)
+NOTE: Specifying compression for data set "WORK.normalized" has decreased its size from 41
+2                                     The WPS System 22:50 Wednesday, August 19, 2015     
+
+      to 32 pages (a 22% reduction)
+NOTE: The data step took :
+      real time : 0.036
+      cpu time  : 0.036
+
+
+36        
+37        proc means data = normalized max maxdec = 0;
+38           var l_:;
+39           run;
+NOTE: 3985 observations were read from "WORK.normalized"
+NOTE: Procedure means step took :
+      real time : 0.009
+      cpu time  : 0.008
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.063
+      cpu time  : 0.062

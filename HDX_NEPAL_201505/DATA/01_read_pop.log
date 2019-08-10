@@ -1,0 +1,96 @@
+1                                     The WPS System 16:48 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas "SAS_DS";
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         
+4         title "POP";
+5         
+6         data pop;
+7            infile 'RAW/pop.csv' dsd dlm = ',' lrecl = 100000 termstr = CRLF firstobs = 2
+7       !  truncover;
+8            input
+9               p_code : $12.
+10              fid : $31.
+11              the_geom : $32767. /* this field is corrupt - just read in and ignore */
+12              area
+13              perimeter
+14              dist_id
+15              survey_nam : $35.
+16              vdc_id
+17              district : $14.
+18              vdc_name : $24.
+19              vdc_code
+20              zone_name : $10.
+21              region : $11.
+22              hhs2011
+23              pop_2011
+24              male2011
+25              female2011
+26              popden_2011;
+27           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/pop.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/pop.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=69739481,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=100000, Recfm=V
+
+NOTE: 3985 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/pop.csv'
+      The minimum record length was 1642
+      The maximum record length was 32960
+NOTE: Data set "WORK.pop" has 3985 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.pop" has decreased its size from 3986 to
+      2541 pages (a 37% reduction)
+NOTE: The data step took :
+      real time : 1.009
+      cpu time  : 1.007
+
+
+28        
+2                                     The WPS System 16:48 Wednesday, August 19, 2015     
+
+29        proc print data = pop (obs = 5);
+30           run;
+NOTE: 5 observations were read from "WORK.pop"
+NOTE: Procedure print step took :
+      real time : 0.005
+      cpu time  : 0.004
+
+
+31        
+32        proc sort data = pop out = sas.pop nodupkey;
+33           by p_code;
+34           run;
+NOTE: 3985 observations were read from "WORK.pop"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "SAS.pop" has 3985 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "SAS.pop" has decreased its size from 3986 to
+      2541 pages (a 37% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.628
+      cpu time  : 0.657
+
+
+35        
+36        proc contents data = sas.pop position;
+37           run;
+NOTE: Procedure contents step took :
+      real time : 0.006
+      cpu time  : 0.006
+
+
+
+NOTE: Submitted statements took :
+      real time : 1.665
+      cpu time  : 1.693

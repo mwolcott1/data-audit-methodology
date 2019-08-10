@@ -1,0 +1,1 @@
+P_CODE,VDC_NAME,DISTRICT,REGION,Hazard Intensity,Exposure Population,Vulnerability Housing,Vulnerability Poverty,Vulnerability,Severity,Severity Normalized,Severity category

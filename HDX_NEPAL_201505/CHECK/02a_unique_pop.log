@@ -1,0 +1,504 @@
+1                                     The WPS System 16:50 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas "../DATA/SAS_DS";
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         
+4         title "POP";
+5         
+6         proc sort data = sas.pop out = temp0 nodupkey;
+7            by _all_;
+8            run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.temp0" has 3985 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp0" has decreased its size from 3986 to
+      2541 pages (a 37% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.866
+      cpu time  : 0.941
+
+
+9         
+10        proc datasets;
+11           delete temp0;
+12           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP0     DATA          93638656      19AUG2015:16:50:44
+NOTE: Deleting "WORK.temp0" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.022
+      cpu time  : 0.022
+
+
+13        
+14        proc sort data = sas.pop out = temp1 nodupkey;
+15           by P_CODE;
+16           run;
+NOTE: The dataset is already sorted. No sort performed
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.temp1" has 3985 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp1" has decreased its size from 3986 to
+      2541 pages (a 37% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.518
+      cpu time  : 0.517
+
+
+17        
+18        proc datasets;
+19           delete temp1;
+20           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP1     DATA          93638656      19AUG2015:16:50:45
+NOTE: Deleting "WORK.temp1" (memtype=DATA)
+NOTE: Procedure datasets step took :
+2                                     The WPS System 16:50 Wednesday, August 19, 2015     
+
+      real time : 0.017
+      cpu time  : 0.017
+
+
+21        
+22        proc sort data = sas.pop out = temp2 nodupkey;
+23           by fid;
+24           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.temp2" has 3985 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp2" has decreased its size from 3986 to
+      2486 pages (a 38% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.607
+      cpu time  : 0.635
+
+
+25        
+26        proc datasets;
+27           delete temp2;
+28           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP2     DATA          91611136      19AUG2015:16:50:46
+NOTE: Deleting "WORK.temp2" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.017
+      cpu time  : 0.015
+
+
+29        
+30        proc sort data = sas.pop out = temp3 nodupkey;
+31           by vdc_code;
+32           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.temp3" has 3985 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp3" has decreased its size from 3986 to
+      2541 pages (a 37% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.615
+      cpu time  : 0.653
+
+
+33        
+34        proc datasets;
+35           delete temp3;
+36           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP3     DATA          93638656      19AUG2015:16:50:46
+NOTE: Deleting "WORK.temp3" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.017
+      cpu time  : 0.017
+
+
+37        
+38        * Supposedly this is unique to VDC but duplicates exist - not appropriate as mer
+38      ! ge key;
+39        proc sort data = sas.pop out = temp4 nodupkey;
+40           by vdc_name;
+41           run;
+3                                     The WPS System 16:50 Wednesday, August 19, 2015     
+
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 300 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp4" has 3685 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp4" has decreased its size from 3686 to
+      2337 pages (a 37% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.564
+      cpu time  : 0.601
+
+
+42        
+43        proc datasets;
+44           delete temp4;
+45           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP4     DATA          86118400      19AUG2015:16:50:47
+NOTE: Deleting "WORK.temp4" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.016
+      cpu time  : 0.015
+
+
+46        
+47        * In theory this is the same as the VDC name;
+48        proc sort data = sas.pop out = temp5 nodupkey;
+49           by survey_nam;
+50           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 340 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp5" has 3645 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp5" has decreased its size from 3646 to
+      2317 pages (a 37% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.560
+      cpu time  : 0.588
+
+
+51        
+52        proc datasets;
+53           delete temp5;
+54           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP5     DATA          85381120      19AUG2015:16:50:47
+NOTE: Deleting "WORK.temp5" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.016
+      cpu time  : 0.015
+
+
+55        
+56        proc sort data = sas.pop out = temp6 nodupkey;
+57           by district;
+58           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 3910 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp6" has 75 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp6" has decreased its size from 76 to
+      52 pages (a 32% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.125
+      cpu time  : 0.160
+
+4                                     The WPS System 16:50 Wednesday, August 19, 2015     
+
+
+59        
+60        proc datasets;
+61           delete temp6;
+62           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP6     DATA           1884160      19AUG2015:16:50:48
+NOTE: Deleting "WORK.temp6" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.001
+      cpu time  : 0.001
+
+
+63        
+64        * district should be subgroup of region and zone;
+65        proc sort data = sas.pop out = temp61 nodupkey;
+66           by region zone_name district;
+67           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 3910 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp61" has 75 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp61" has decreased its size from 76 to
+      50 pages (a 35% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.122
+      cpu time  : 0.158
+
+
+68        
+69        proc datasets;
+70           delete temp61;
+71           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP61    DATA           1810432      19AUG2015:16:50:48
+NOTE: Deleting "WORK.temp61" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.001
+      cpu time  : 0.001
+
+
+72        
+73        proc sort data = sas.pop out = temp62 nodupkey;
+74           by zone_name district;
+75           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 3910 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp62" has 75 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp62" has decreased its size from 76 to
+      50 pages (a 35% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.125
+      cpu time  : 0.159
+
+
+76        
+77        proc datasets;
+78           delete temp62;
+79           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP62    DATA           1810432      19AUG2015:16:50:48
+NOTE: Deleting "WORK.temp62" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.001
+      cpu time  : 0.001
+5                                     The WPS System 16:50 Wednesday, August 19, 2015     
+
+
+
+80        
+81        proc sort data = sas.pop out = temp63 nodupkey;
+82           by region district;
+83           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 3910 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp63" has 75 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp63" has decreased its size from 76 to
+      49 pages (a 36% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.120
+      cpu time  : 0.158
+
+
+84        
+85        proc datasets;
+86           delete temp63;
+87           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP63    DATA           1773568      19AUG2015:16:50:48
+NOTE: Deleting "WORK.temp63" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.001
+      cpu time  : 0.001
+
+
+88        
+89        proc sort data = sas.pop out = temp7 nodupkey;
+90           by zone_name;
+91           run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 3971 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp7" has 14 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp7" has decreased its size from 15 to
+      12 pages (a 20% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.120
+      cpu time  : 0.146
+
+
+92        
+93        proc datasets;
+94           delete temp7;
+95           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP7     DATA            409600      19AUG2015:16:50:48
+NOTE: Deleting "WORK.temp7" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.001
+      cpu time  : 0.001
+
+
+96        
+97        * zone should be subgroup of region;
+98        proc sort data = sas.pop out = temp71 nodupkey;
+99           by region zone_name;
+100          run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 3971 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp71" has 14 observation(s) and 18 variable(s)
+6                                     The WPS System 16:50 Wednesday, August 19, 2015     
+
+NOTE: Specifying compression for data set "WORK.temp71" has decreased its size from 15 to
+      11 pages (a 27% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.118
+      cpu time  : 0.144
+
+
+101       
+102       proc datasets;
+103          delete temp71;
+104          quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2555000007e6_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP71    DATA            372736      19AUG2015:16:50:48
+NOTE: Deleting "WORK.temp71" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.001
+      cpu time  : 0.001
+
+
+105       
+106       proc sort data = sas.pop out = temp8 nodupkey;
+107          by region;
+108          run;
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: 3980 observations were found and deleted due to having duplicate sort keys
+NOTE: Data set "WORK.temp8" has 5 observation(s) and 18 variable(s)
+NOTE: Specifying compression for data set "WORK.temp8" has not changed its size of 6 pages
+NOTE: Procedure sort step took :
+      real time : 0.117
+      cpu time  : 0.143
+
+
+
+NOTE: Submitted statements took :
+      real time : 4.718
+      cpu time  : 5.145

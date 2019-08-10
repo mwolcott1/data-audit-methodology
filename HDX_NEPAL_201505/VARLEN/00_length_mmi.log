@@ -1,0 +1,63 @@
+1                                     The WPS System 16:33 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+2         %include "varlen.mac";
+Start of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+3       +  %macro varlen (var);
+4       +     l_&var. = length (&var.);
+5       +  %mend;
+End of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+6         
+7         title "MMI";
+8         
+9         data mmi;
+10           infile '../DATA/RAW/mmi.csv' dsd dlm = ',' lrecl = 1000 termstr = CRLF firsto
+10      ! bs = 2 truncover;
+11           input
+12              p_code : $400.
+13              mmi_max
+14              mmi_min;
+15           %varlen (p_code);
+16           keep l_:;
+17           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/mmi.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/mmi.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=80521,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=1000, Recfm=V
+
+NOTE: 3354 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/mmi.csv'
+      The minimum record length was 22
+      The maximum record length was 22
+NOTE: Data set "WORK.mmi" has 3354 observation(s) and 1 variable(s)
+NOTE: Specifying compression for data set "WORK.mmi" has increased its size from 8 to 11
+      pages (a 38% increase)
+NOTE: The data step took :
+      real time : 0.012
+      cpu time  : 0.011
+
+
+18        
+19        proc means data = mmi max maxdec = 0;
+20           var l_:;
+21           run;
+NOTE: 3354 observations were read from "WORK.mmi"
+NOTE: Procedure means step took :
+      real time : 0.008
+      cpu time  : 0.007
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.037
+2                                     The WPS System 16:33 Wednesday, August 19, 2015     
+
+      cpu time  : 0.037

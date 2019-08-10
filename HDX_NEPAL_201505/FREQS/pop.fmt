@@ -1,0 +1,10 @@
+proc format;
+   value $pop
+        " " = "Missing"
+      Other = "Populated";
+   value pop
+              . = "Missing"
+       low -< 0 = "Negative"
+              0 = "Zero"
+      0 <- high = "Positive";
+   run;
