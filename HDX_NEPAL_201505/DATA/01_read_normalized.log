@@ -1,0 +1,99 @@
+1                                     The WPS System 22:51 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas 'SAS_DS';
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         
+4         title "NORMALIZED";
+5         
+6         data normalized;
+7            infile 'RAW/normalized.csv' dsd dlm = ',' lrecl = 1000 termstr = CRLF firstob
+7       ! s = 2 truncover;
+8            input
+9               p_code : $12.
+10              vdc_name : $24.
+11              district : $14.
+12              region : $11.
+13              mmi_max
+14              mmi_unlog
+15              mmi_max_norm
+16              pop_2011
+17              pop_2011_norm
+18              popden_2011
+19              tmp_popden_2011_norm $ /* there are character values - turns out they are 
+19      ! "#NUM!" */
+20              hse_wall_percent_high_risk
+21              hse_wall_percent_high_risk_norm
+22              hse_roof_percent_high_risk
+23              hse_roof_percent_high_risk_norm
+24              human_poverty_index
+25              human_poverty_index_norm;
+26           if tmp_popden_2011_norm = "#NUM!" then popden_2011_norm =.;
+27           else popden_2011_norm = input (tmp_popden_2011_norm, 8.);
+28           drop tmp_popden_2011_norm;
+29           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/normalized.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/normalized.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=450277,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=1000, Recfm=V
+
+NOTE: 3985 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/normalized.csv'
+      The minimum record length was 97
+      The maximum record length was 132
+NOTE: Data set "WORK.normalized" has 3985 observation(s) and 17 variable(s)
+NOTE: Specifying compression for data set "WORK.normalized" has decreased its size from
+      168 to 143 pages (a 15% reduction)
+NOTE: The data step took :
+      real time : 0.030
+      cpu time  : 0.030
+2                                     The WPS System 22:51 Wednesday, August 19, 2015     
+
+
+
+30        
+31        proc print data = normalized (obs = 5);
+32           run;
+NOTE: 5 observations were read from "WORK.normalized"
+NOTE: Procedure print step took :
+      real time : 0.003
+      cpu time  : 0.003
+
+
+33        
+34        proc sort data = normalized out = sas.normalized nodupkey;
+35           by p_code;
+36           run;
+NOTE: 3985 observations were read from "WORK.normalized"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "SAS.normalized" has 3985 observation(s) and 17 variable(s)
+NOTE: Specifying compression for data set "SAS.normalized" has decreased its size from 168
+      to 143 pages (a 15% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.015
+      cpu time  : 0.016
+
+
+37        
+38        proc contents data = sas.normalized position;
+39           run;
+NOTE: Procedure contents step took :
+      real time : 0.006
+      cpu time  : 0.005
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.073
+      cpu time  : 0.073

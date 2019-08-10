@@ -1,0 +1,85 @@
+1                                     The WPS System 16:39 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+2         %include "varlen.mac";
+Start of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+3       +  %macro varlen (var);
+4       +     l_&var. = length (&var.);
+5       +  %mend;
+End of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+6         
+7         title "POP";
+8         
+9         data pop;
+10           infile '../DATA/RAW/pop.csv' dsd dlm = ',' lrecl = 100000 termstr = CRLF firs
+10      ! tobs = 2 truncover;
+11           input
+12              p_code : $400.
+13              fid : $400.
+14              the_geom : $32767.
+15              area
+16              perimeter
+17              dist_id
+18              survey_nam : $400.
+19              vdc_id
+20              district : $400.
+21              vdc_name : $400.
+22              vdc_code
+23              zone_name : $400.
+24              region : $400.
+25              hhs2011
+26              pop_2011
+27              male2011
+28              female2011
+29              popden_2011;
+30           %varlen (p_code);
+31           %varlen (fid);
+32           %varlen (the_geom);
+33           %varlen (survey_nam);
+34           %varlen (district);
+35           %varlen (vdc_name);
+36           %varlen (zone_name);
+37           %varlen (region);
+38           keep l_:;
+39           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/pop.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/pop.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=69739481,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=100000, Recfm=V
+
+NOTE: 3985 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/pop.csv'
+      The minimum record length was 1642
+2                                     The WPS System 16:39 Wednesday, August 19, 2015     
+
+      The maximum record length was 32960
+NOTE: Data set "WORK.pop" has 3985 observation(s) and 8 variable(s)
+NOTE: Specifying compression for data set "WORK.pop" has decreased its size from 65 to 48
+      pages (a 27% reduction)
+NOTE: The data step took :
+      real time : 0.571
+      cpu time  : 0.570
+
+
+40        
+41        proc means data = pop max maxdec = 0;
+42           var l_:;
+43           run;
+NOTE: 3985 observations were read from "WORK.pop"
+NOTE: Procedure means step took :
+      real time : 0.009
+      cpu time  : 0.008
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.598
+      cpu time  : 0.596

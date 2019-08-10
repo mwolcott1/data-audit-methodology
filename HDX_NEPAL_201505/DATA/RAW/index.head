@@ -1,0 +1,10 @@
+P_CODE,VDC_NAME,DISTRICT,REGION,Hazard Intensity,Exposure Population,Vulnerability Housing,Vulnerability Poverty,Vulnerability,Severity,Severity Normalized,Severity category
+C-BAG-27-031,KathmanduN.P.,Kathmandu,Central,2.17,10.00,8.86,1.82,5.34,4.88,10.0000,Highest
+C-BAG-25-027,LalitpurN.P.,Lalitpur,Central,1.72,2.26,8.40,0.82,4.61,2.62,5.3707,Highest
+C-NAR-35-005,BharatpurN. P.,Chitawan,Central,2.21,1.47,5.38,2.53,3.96,2.34,4.8083,Highest
+C-BAG-26-012,MadhyapurThimiN.P.,Bhaktapur,Central,2.45,0.85,8.23,0.89,4.56,2.12,4.3447,Highest
+C-BAG-27-028,Jorpati,Kathmandu,Central,1.91,0.87,8.86,1.82,5.34,2.07,4.2407,Highest
+C-BAG-26-003,BhaktapurN.P.,Bhaktapur,Central,1.82,0.84,8.23,0.89,4.56,1.91,3.9135,Highest
+W-GAN-36-050,PrithbinarayanN.P.,Gorkha,Western,3.48,0.33,6.44,5.21,5.83,1.89,3.8764,Highest
+C-JAN-20-025,KamalamiN.P.,Sindhuli,Central,2.54,0.40,5.19,6.55,5.87,1.82,3.7307,Highest
+C-JAN-20-026,Kapilakot,Sindhuli,Central,8.02,0.12,5.19,6.55,5.87,1.77,3.6294,Highest

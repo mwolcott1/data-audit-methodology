@@ -1,0 +1,3 @@
+%macro varlen (var);
+   l_&var. = length (&var.);
+%mend;

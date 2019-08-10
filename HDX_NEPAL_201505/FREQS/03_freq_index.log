@@ -1,0 +1,85 @@
+1                                     The WPS System  10:07 Friday, December  4, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas "../DATA/SAS_DS";
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         %include "pop.fmt";
+Start of %INCLUDE(level 1) /u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/FREQS/pop.f
+mt
+4       +  proc format;
+5       +     value $pop
+6       +          " " = "Missing"
+7       +        Other = "Populated";
+NOTE: Format $pop output
+8       +     value pop
+9       +                . = "Missing"
+10      +         low -< 0 = "Negative"
+11      +                0 = "Zero"
+12      +        0 <- high = "Positive";
+NOTE: Format pop output
+13      +     run;
+NOTE: Procedure format step took :
+      real time : 0.003
+      cpu time  : 0.002
+
+
+End of %INCLUDE(level 1) /u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/FREQS/pop.fmt
+14        
+15        title "INDEX";
+16        
+17        ods html body = "03_freq_index.xls";
+NOTE: Writing HTML Body file
+      '/u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/FREQS/03_freq_index.xls'
+18        proc freq data = sas.index;
+19           tables
+20              p_code
+21              vdc_name
+22              district
+23              region
+24              hazard_intensity
+25              exposure_population
+26              vulnerability_housing
+27              vulnerability_poverty
+28              vulnerability
+29              severity
+30              severity_normalized
+31              severity_category
+32              / missing nocum;
+33           format p_code vdc_name $pop.
+34                  hazard_intensity exposure_population vulnerability_housing vulnerabili
+34      ! ty_poverty
+35                  vulnerability severity severity_normalized pop.;
+36           run;
+2                                     The WPS System  10:07 Friday, December  4, 2015     
+
+NOTE: 3985 observations were read from "SAS.index"
+NOTE: Procedure freq step took :
+      real time : 0.023
+      cpu time  : 0.023
+
+
+37        
+38        proc means data = sas.index nmiss mean min p1 q1 median q3 p99 max maxdec = 2;
+39           var hazard_intensity exposure_population vulnerability_housing vulnerability_
+39      ! poverty
+40               vulnerability severity severity_normalized;
+41           run;
+NOTE: 3985 observations were read from "SAS.index"
+NOTE: Procedure means step took :
+      real time : 0.014
+      cpu time  : 0.015
+
+
+42        ods html close;
+
+NOTE: Submitted statements took :
+      real time : 0.067
+      cpu time  : 0.068

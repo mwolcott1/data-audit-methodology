@@ -1,0 +1,81 @@
+1                                     The WPS System 16:46 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas 'SAS_DS';
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         
+4         title "MMI";
+5         
+6         data mmi;
+7            infile 'RAW/mmi.csv' dsd dlm = ',' lrecl = 1000 termstr = CRLF firstobs = 2 t
+7       ! runcover;
+8            input
+9               p_code : $12.
+10              mmi_max
+11              mmi_min;
+12           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/mmi.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/mmi.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=80521,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=1000, Recfm=V
+
+NOTE: 3354 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/mmi.csv'
+      The minimum record length was 22
+      The maximum record length was 22
+NOTE: Data set "WORK.mmi" has 3354 observation(s) and 3 variable(s)
+NOTE: Specifying compression for data set "WORK.mmi" has increased its size from 25 to 30
+      pages (a 20% increase)
+NOTE: The data step took :
+      real time : 0.009
+      cpu time  : 0.009
+
+
+13        
+14        proc print data = mmi (obs = 5);
+15           run;
+NOTE: 5 observations were read from "WORK.mmi"
+NOTE: Procedure print step took :
+      real time : 0.003
+      cpu time  : 0.003
+
+
+16        
+17        proc sort data = mmi out = sas.mmi nodupkey;
+18           by p_code;
+19           run;
+NOTE: 3354 observations were read from "WORK.mmi"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "SAS.mmi" has 3354 observation(s) and 3 variable(s)
+2                                     The WPS System 16:46 Wednesday, August 19, 2015     
+
+NOTE: Specifying compression for data set "SAS.mmi" has increased its size from 25 to 30
+      pages (a 20% increase)
+NOTE: Procedure sort step took :
+      real time : 0.008
+      cpu time  : 0.009
+
+
+20        
+21        proc contents data = sas.mmi position;
+22           run;
+NOTE: Procedure contents step took :
+      real time : 0.005
+      cpu time  : 0.004
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.043
+      cpu time  : 0.044

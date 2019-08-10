@@ -1,0 +1,170 @@
+1                                     The WPS System 22:52 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas "../DATA/SAS_DS";
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         
+4         title "Test merge";
+5         
+6         proc sort data = sas.index (keep = P_CODE) out = index nodupkey;
+7            by P_CODE;
+8            run;
+NOTE: The dataset is already sorted. No sort performed
+NOTE: 3985 observations were read from "SAS.index"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.index" has 3985 observation(s) and 1 variable(s)
+NOTE: Specifying compression for data set "WORK.index" has increased its size from 13 to
+      20 pages (a 54% increase)
+NOTE: Procedure sort step took :
+      real time : 0.005
+      cpu time  : 0.005
+
+
+9         
+10        proc sort data = sas.mmi (keep = P_CODE) out = mmi nodupkey;
+11           by P_CODE;
+12           run;
+NOTE: The dataset is already sorted. No sort performed
+NOTE: 3354 observations were read from "SAS.mmi"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.mmi" has 3354 observation(s) and 1 variable(s)
+NOTE: Specifying compression for data set "WORK.mmi" has increased its size from 11 to 17
+      pages (a 55% increase)
+NOTE: Procedure sort step took :
+      real time : 0.001
+      cpu time  : 0.002
+
+
+13        
+14        proc sort data = sas.normalized (keep = P_CODE) out = normalized nodupkey;
+15           by P_CODE;
+16           run;
+NOTE: The dataset is already sorted. No sort performed
+NOTE: 3985 observations were read from "SAS.normalized"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.normalized" has 3985 observation(s) and 1 variable(s)
+NOTE: Specifying compression for data set "WORK.normalized" has increased its size from 13
+      to 20 pages (a 54% increase)
+NOTE: Procedure sort step took :
+      real time : 0.003
+      cpu time  : 0.003
+
+
+2                                     The WPS System 22:52 Wednesday, August 19, 2015     
+
+17        
+18        proc sort data = sas.pop (keep = P_CODE) out = pop nodupkey;
+19           by P_CODE;
+20           run;
+NOTE: The dataset is already sorted. No sort performed
+NOTE: 3985 observations were read from "SAS.pop"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.pop" has 3985 observation(s) and 1 variable(s)
+NOTE: Specifying compression for data set "WORK.pop" has increased its size from 13 to 20
+      pages (a 54% increase)
+NOTE: Procedure sort step took :
+      real time : 0.038
+      cpu time  : 0.037
+
+
+21        
+22        proc sort data = sas.vulnerability out = vulnerability nodupkey;
+23           by P_CODE;
+24           run;
+NOTE: The dataset is already sorted. No sort performed
+NOTE: 3985 observations were read from "SAS.vulnerability"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.vulnerability" has 3985 observation(s) and 24 variable(s)
+NOTE: Specifying compression for data set "WORK.vulnerability" has decreased its size from
+      223 to 179 pages (a 20% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.012
+      cpu time  : 0.012
+
+
+25        
+26        data merged;
+27           merge index (in = a)
+28                 mmi (in = b)
+29                 normalized (in = c)
+30                 pop (in = d)
+31                 vulnerability (in = e);
+32           by P_CODE;
+33           in_index = a;
+34           in_mmi = b;
+35           in_normalized = c;
+36           in_pop = d;
+37           in_vulnerability = e;
+38           run;
+
+NOTE: 3985 observations were read from "WORK.index"
+NOTE: 3354 observations were read from "WORK.mmi"
+NOTE: 3985 observations were read from "WORK.normalized"
+NOTE: 3985 observations were read from "WORK.pop"
+NOTE: 3985 observations were read from "WORK.vulnerability"
+NOTE: Data set "WORK.merged" has 3985 observation(s) and 29 variable(s)
+NOTE: Specifying compression for data set "WORK.merged" has decreased its size from 267 to
+      203 pages (a 24% reduction)
+NOTE: The data step took :
+      real time : 0.023
+      cpu time  : 0.022
+
+
+3                                     The WPS System 22:52 Wednesday, August 19, 2015     
+
+39        
+40        proc datasets;
+41           delete index mmi normalized pop vulnerability;
+42           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work858200000cb9_msight1
+
+                                         Members
+
+                                      Member                                        
+        Number        Member Name      Type       File Size      Date Last Modified 
+     _______________________________________________________________________________
+                1    INDEX            DATA             81920      19AUG2015:22:52:10
+                2    MERGED           DATA            831488      19AUG2015:22:52:10
+                3    MMI              DATA             69632      19AUG2015:22:52:10
+                4    NORMALIZED       DATA             81920      19AUG2015:22:52:10
+                5    POP              DATA             81920      19AUG2015:22:52:10
+                6    VULNERABILITY    DATA            733184      19AUG2015:22:52:10
+NOTE: Deleting "WORK.index" (memtype=DATA)
+NOTE: Deleting "WORK.mmi" (memtype=DATA)
+NOTE: Deleting "WORK.normalized" (memtype=DATA)
+NOTE: Deleting "WORK.pop" (memtype=DATA)
+NOTE: Deleting "WORK.vulnerability" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.008
+      cpu time  : 0.008
+
+
+43        
+44        proc freq data  = merged;
+45           tables in_index * in_mmi * in_normalized * in_pop * in_vulnerability / list m
+45      ! issing nocum nopercent;
+46           run;
+NOTE: 3985 observations were read from "WORK.merged"
+NOTE: Procedure freq step took :
+      real time : 0.017
+      cpu time  : 0.016
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.128
+      cpu time  : 0.127

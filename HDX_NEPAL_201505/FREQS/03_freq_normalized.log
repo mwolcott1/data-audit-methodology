@@ -1,0 +1,97 @@
+1                                     The WPS System  10:08 Friday, December  4, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas '../DATA/SAS_DS';
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         %include "pop.fmt";
+Start of %INCLUDE(level 1) /u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/FREQS/pop.f
+mt
+4       +  proc format;
+5       +     value $pop
+6       +          " " = "Missing"
+7       +        Other = "Populated";
+NOTE: Format $pop output
+8       +     value pop
+9       +                . = "Missing"
+10      +         low -< 0 = "Negative"
+11      +                0 = "Zero"
+12      +        0 <- high = "Positive";
+NOTE: Format pop output
+13      +     run;
+NOTE: Procedure format step took :
+      real time : 0.003
+      cpu time  : 0.002
+
+
+End of %INCLUDE(level 1) /u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/FREQS/pop.fmt
+14        
+15        title "NORMALIZED";
+16        
+17        ods html body = "03_freq_normalized.xls";
+NOTE: Writing HTML Body file
+      '/u01/STANDARD/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/FREQS/03_freq_normalized.xls'
+18        proc freq data = sas.normalized;
+19           tables
+20              p_code
+21              vdc_name
+22              district
+23              region
+24              mmi_max
+25              mmi_unlog
+26              mmi_max_norm
+27              pop_2011
+28              pop_2011_norm
+29              popden_2011
+30              popden_2011_norm
+31              hse_wall_percent_high_risk
+32              hse_wall_percent_high_risk_norm
+33              hse_roof_percent_high_risk
+34              hse_roof_percent_high_risk_norm
+35              human_poverty_index
+36              human_poverty_index_norm
+37              / missing nocum;
+2                                     The WPS System  10:08 Friday, December  4, 2015     
+
+38           format p_code vdc_name $pop.
+39                  mmi_max mmi_unlog mmi_max_norm pop_2011 pop_2011_norm popden_2011 popd
+39      ! en_2011_norm
+40                  hse_wall_percent_high_risk hse_wall_percent_high_risk_norm hse_roof_pe
+40      ! rcent_high_risk
+41                  hse_roof_percent_high_risk_norm human_poverty_index human_poverty_inde
+41      ! x_norm pop.;
+42           run;
+NOTE: 3985 observations were read from "SAS.normalized"
+NOTE: Procedure freq step took :
+      real time : 0.030
+      cpu time  : 0.030
+
+
+43        
+44        proc means data = sas.normalized nmiss mean min p1 q1 median q3 p99 max maxdec =
+44      !  2;
+45           var mmi_max mmi_unlog mmi_max_norm pop_2011 pop_2011_norm popden_2011 popden_
+45      ! 2011_norm
+46               hse_wall_percent_high_risk hse_wall_percent_high_risk_norm hse_roof_perce
+46      ! nt_high_risk
+47               hse_roof_percent_high_risk_norm human_poverty_index human_poverty_index_n
+47      ! orm;
+48           run;
+NOTE: 3985 observations were read from "SAS.normalized"
+NOTE: Procedure means step took :
+      real time : 0.026
+      cpu time  : 0.028
+
+
+49        ods html close;
+
+NOTE: Submitted statements took :
+      real time : 0.086
+      cpu time  : 0.087

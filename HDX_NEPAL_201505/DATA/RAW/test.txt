@@ -1,0 +1,7 @@
+    3986 index.csv
+    3355 mmi.csv
+    3986 normalized.csv
+    3986 pop.csv
+    3986 pop_final.csv
+    3986 vulnerability.csv
+   23285 total

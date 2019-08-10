@@ -1,0 +1,207 @@
+                                        NORMALIZED    10:08 Friday, December  4, 2015    1
+
+                                    The FREQ Procedure
+
+                            p_code       Frequency     Percent
+                            ----------------------------------
+                            Populated        3985      100.00 
+
+                            vdc_name     Frequency     Percent
+                            ----------------------------------
+                            Populated        3985      100.00 
+                                        NORMALIZED    10:08 Friday, December  4, 2015    2
+
+                                    The FREQ Procedure
+
+                         district          Frequency     Percent
+                         ---------------------------------------
+                         Achham                  76        1.91 
+                         Arghakhanchi            42        1.05 
+                         Baglung                 60        1.51 
+                         Baitadi                 63        1.58 
+                         Bajhang                 48        1.20 
+                         Bajura                  28        0.70 
+                         Banke                   47        1.18 
+                         Bara                    99        2.48 
+                         Bardiya                 33        0.83 
+                         Bhaktapur               18        0.45 
+                         Bhojpur                 63        1.58 
+                         Chitawan                39        0.98 
+                         Dadeldhura              21        0.53 
+                         Dailekh                 56        1.41 
+                         Dang                    41        1.03 
+                         Darchula                41        1.03 
+                         Dhading                 50        1.25 
+                         Dhankuta                36        0.90 
+                         Dhanusa                102        2.56 
+                         Dolakha                 52        1.30 
+                         Dolpa                   23        0.58 
+                         Doti                    52        1.30 
+                         Gorkha                  67        1.68 
+                         Gulmi                   79        1.98 
+                         Humla                   27        0.68 
+                         Ilam                    49        1.23 
+                         Jajarkot                30        0.75 
+                         Jhapa                   50        1.25 
+                         Jumla                   30        0.75 
+                         Kailali                 44        1.10 
+                         Kalikot                 30        0.75 
+                         Kanchanpur              21        0.53 
+                         Kapilbastu              78        1.96 
+                         Kaski                   45        1.13 
+                         Kathmandu               59        1.48 
+                         Kavrepalanchok          90        2.26 
+                         Khotang                 76        1.91 
+                         Lalitpur                42        1.05 
+                         Lamjung                 61        1.53 
+                         Mahottari               77        1.93 
+                         Makwanpur               44        1.10 
+                         Manang                  13        0.33 
+                         Morang                  66        1.66 
+                         Mugu                    24        0.60 
+                         Mustang                 16        0.40 
+                         Myagdi                  41        1.03 
+                         Nawalparasi             75        1.88 
+                         Nuwakot                 62        1.56 
+                         Okhaldhunga             56        1.41 
+                         Palpa                   66        1.66 
+                         Panchthar               41        1.03 
+                         Parbat                  55        1.38 
+                         Parsa                   84        2.11 
+                         Pyuthan                 49        1.23 
+                                        NORMALIZED    10:08 Friday, December  4, 2015    3
+
+                                    The FREQ Procedure
+
+                          district         Frequency     Percent
+                          --------------------------------------
+                          Ramechhap              55        1.38 
+                          Rasuwa                 18        0.45 
+                          Rautahat               97        2.43 
+                          Rolpa                  51        1.28 
+                          Rukum                  43        1.08 
+                          Rupandehi              72        1.81 
+                          Salyan                 47        1.18 
+                          Sankhuwasabha          34        0.85 
+                          Saptari               116        2.91 
+                          Sarlahi               100        2.51 
+                          Sindhuli               54        1.36 
+                          Sindhupalchok          79        1.98 
+                          Siraha                108        2.71 
+                          Solukhumbu             34        0.85 
+                          Sunsari                53        1.33 
+                          Surkhet                51        1.28 
+                          Syangja                62        1.56 
+                          Tanahu                 47        1.18 
+                          Taplejung              50        1.25 
+                          Terhathum              32        0.80 
+                          Udayapur               45        1.13 
+
+                           region         Frequency     Percent
+                           ------------------------------------
+                           Central            1221       30.64 
+                           Eastern             909       22.81 
+                           Far-Western         394        9.89 
+                           Mid-Western         582       14.60 
+                           Western             879       22.06 
+
+                            mmi_max     Frequency     Percent
+                            ---------------------------------
+                            Positive        3985      100.00 
+
+                            mmi_unlog    Frequency     Percent
+                            ----------------------------------
+                            Positive         3985      100.00 
+
+                          mmi_max_norm    Frequency     Percent
+                          -------------------------------------
+                          Zero                1761       44.19 
+                          Positive            2224       55.81 
+
+                            pop_2011    Frequency     Percent
+                            ---------------------------------
+                            Zero              12        0.30 
+                            Positive        3973       99.70 
+
+                          pop_2011_norm    Frequency     Percent
+                          --------------------------------------
+                          Zero                   32        0.80 
+                          Positive             3953       99.20 
+                                        NORMALIZED    10:08 Friday, December  4, 2015    4
+
+                                    The FREQ Procedure
+
+                           popden_2011    Frequency     Percent
+                           ------------------------------------
+                           Zero                 12        0.30 
+                           Positive           3973       99.70 
+
+                        popden_2011_norm    Frequency     Percent
+                        -----------------------------------------
+                        Missing                   12        0.30 
+                        Zero                      13        0.33 
+                        Positive                3960       99.37 
+
+                   hse_wall_percent_high_risk    Frequency     Percent
+                   ---------------------------------------------------
+                   Positive                          3985      100.00 
+
+                 hse_wall_percent_high_risk_norm    Frequency     Percent
+                 --------------------------------------------------------
+                 Zero                                    100        2.51 
+                 Positive                               3885       97.49 
+
+                   hse_roof_percent_high_risk    Frequency     Percent
+                   ---------------------------------------------------
+                   Positive                          3985      100.00 
+
+                 hse_roof_percent_high_risk_norm    Frequency     Percent
+                 --------------------------------------------------------
+                 Zero                                     27        0.68 
+                 Positive                               3958       99.32 
+
+                       human_poverty_index    Frequency     Percent
+                       --------------------------------------------
+                       Positive                   3985      100.00 
+
+                    human_poverty_index_norm    Frequency     Percent
+                    -------------------------------------------------
+                    Zero                              45        1.13 
+                    Positive                        3940       98.87 
+                                        NORMALIZED    10:08 Friday, December  4, 2015    5
+
+                                   The MEANS Procedure
+
+Variable                        nmiss         Mean      Minimum           p1           q1
+-----------------------------------------------------------------------------------------
+mmi_max                             0         5.62         3.50         3.50         4.41
+mmi_unlog                           0  13842086.75      3162.00      3162.00     25894.00
+mmi_max_norm                        0         0.32         0.00         0.00         0.00
+pop_2011                            0      6588.16         0.00       579.00      2979.00
+pop_2011_norm                       0         0.07         0.00         0.01         0.03
+popden_2011                         0       443.71         0.00         2.27       126.79
+popden_2011_norm                   12         5.42         0.00         1.18         4.83
+hse_wall_percent_high_risk          0        76.40        26.06        26.06        40.63
+hse_wall_percent_high_risk_norm     0         6.85         0.00         0.00         1.98
+hse_roof_percent_high_risk          0        44.65         1.05         1.27        22.94
+hse_roof_percent_high_risk_norm     0         4.57         0.00         0.02         2.29
+human_poverty_index                 0        34.46        16.50        16.50        27.42
+human_poverty_index_norm            0         5.48         0.00         0.00         3.33
+-----------------------------------------------------------------------------------------
+
+Variable                              Median           q3          p99      Maximum
+-----------------------------------------------------------------------------------------
+mmi_max                                 5.64         6.75         8.18         8.63
+mmi_unlog                          439373.00   5594874.00 151914636.00 431343090.00
+mmi_max_norm                            0.01         0.13         3.52        10.00
+pop_2011                             4409.00      6668.00     36019.00    975453.00
+pop_2011_norm                           0.05         0.07         0.37        10.00
+popden_2011                           225.62       540.02      3141.65     23053.42
+popden_2011_norm                        5.40         6.27         8.02        10.00
+hse_wall_percent_high_risk             94.47        97.38        98.78        99.61
+hse_wall_percent_high_risk_norm         9.30         9.70         9.89        10.00
+hse_roof_percent_high_risk             39.29        71.81        96.49        96.49
+hse_roof_percent_high_risk_norm         4.01         7.41        10.00        10.00
+human_poverty_index                    34.92        40.57        46.68        49.26
+human_poverty_index_norm                5.62         7.35         9.21        10.00
+-----------------------------------------------------------------------------------------

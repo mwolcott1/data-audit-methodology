@@ -1,0 +1,76 @@
+1                                     The WPS System 16:31 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+2         %include "varlen.mac";
+Start of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+3       +  %macro varlen (var);
+4       +     l_&var. = length (&var.);
+5       +  %mend;
+End of %INCLUDE(level 1) /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/VARLEN/varlen.mac
+6         
+7         title "INDEX";
+8         
+9         data index;
+10           infile '../DATA/RAW/index.csv' dsd dlm = ',' lrecl = 1000 termstr = CRLF firs
+10      ! tobs = 2 truncover;
+11           input
+12              p_code : $400.
+13              vdc_name : $400.
+14              district : $400.
+15              region : $400.
+16              hazard_intensity
+17              exposure_population
+18              vulnerability_housing
+19              vulnerability_poverty
+20              vulnerability
+21              severity
+22              severity_normalized
+23              severity_category : $400.;
+24           %varlen (p_code);
+25           %varlen (vdc_name);
+26           %varlen (district);
+27           %varlen (region);
+28           %varlen (severity_category);
+29           keep l_:;
+30           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/index.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/index.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=341384,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=1000, Recfm=V
+
+NOTE: 3985 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/index.csv'
+      The minimum record length was 72
+      The maximum record length was 106
+NOTE: Data set "WORK.index" has 3985 observation(s) and 5 variable(s)
+NOTE: Specifying compression for data set "WORK.index" has decreased its size from 41 to
+      32 pages (a 22% reduction)
+NOTE: The data step took :
+      real time : 0.031
+      cpu time  : 0.031
+
+
+2                                     The WPS System 16:31 Wednesday, August 19, 2015     
+
+31        
+32        proc means data = index max maxdec = 0;
+33           var l_:;
+34           run;
+NOTE: 3985 observations were read from "WORK.index"
+NOTE: Procedure means step took :
+      real time : 0.009
+      cpu time  : 0.008
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.058
+      cpu time  : 0.056

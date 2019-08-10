@@ -1,0 +1,72 @@
+1                                     The WPS System 16:50 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas '../DATA/SAS_DS';
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         
+4         title "MMI";
+5         
+6         proc sort data = sas.mmi out = temp0 nodupkey;
+7            by _all_;
+8            run;
+NOTE: 3354 observations were read from "SAS.mmi"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.temp0" has 3354 observation(s) and 3 variable(s)
+NOTE: Specifying compression for data set "WORK.temp0" has increased its size from 25 to
+      30 pages (a 20% increase)
+NOTE: Procedure sort step took :
+      real time : 0.009
+      cpu time  : 0.010
+
+
+9         
+10        proc datasets;
+11           delete temp0;
+12           quit;
+                                  The Datasets Procedure
+
+                                        Directory
+
+                 Libref           WORK                                  
+                 Engine           WPD                                   
+                 Physical Name    /u01/work/WPS_work2377000007c3_msight1
+
+                                         Members
+
+                         Member    Member                                        
+            Number        Name      Type       File Size      Date Last Modified 
+         ________________________________________________________________________
+                    1    TEMP0     DATA            122880      19AUG2015:16:50:12
+NOTE: Deleting "WORK.temp0" (memtype=DATA)
+NOTE: Procedure datasets step took :
+      real time : 0.005
+      cpu time  : 0.005
+
+
+13        
+14        proc sort data = sas.mmi out = temp1 nodupkey;
+15           by p_code;
+16           run;
+NOTE: The dataset is already sorted. No sort performed
+NOTE: 3354 observations were read from "SAS.mmi"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "WORK.temp1" has 3354 observation(s) and 3 variable(s)
+NOTE: Specifying compression for data set "WORK.temp1" has increased its size from 25 to
+      30 pages (a 20% increase)
+NOTE: Procedure sort step took :
+      real time : 0.002
+      cpu time  : 0.002
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.034
+      cpu time  : 0.034

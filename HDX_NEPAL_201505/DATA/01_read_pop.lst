@@ -1,0 +1,100 @@
+                                           POP       16:48 Wednesday, August 19, 2015    1
+
+Obs    p_code                  fid              
+
+ 1  C-BAG-23-001 khm_pop_adm4population_gov.3429
+ 2  C-BAG-23-002 khm_pop_adm4population_gov.3430
+ 3  C-BAG-23-003 khm_pop_adm4population_gov.3453
+ 4  C-BAG-23-004 khm_pop_adm4population_gov.3394
+ 5  C-BAG-23-005 khm_pop_adm4population_gov.3389
+
+Obs                                        the_geom                                       
+
+ 1  MULTIPOLYGON (((85.940955641316 27.67366017142269, 85.94130570011379 27.67261366318810
+ 2  MULTIPOLYGON (((85.6455507752807 27.78291072626119, 85.64587201283088 27.7830379046257
+ 3  MULTIPOLYGON (((85.57728826166604 27.810880906693743, 85.57746144922224 27.81073154470
+ 4  MULTIPOLYGON (((85.62455270889409 27.911139965908344, 85.6259172756079 27.910330160660
+ 5  MULTIPOLYGON (((85.79258458446607 27.87812209621584, 85.7935902655111 27.8780451696858
+
+Obs     area    perimeter dist_id survey_nam vdc_id   district    vdc_name   vdc_code
+
+ 1  23272811.27  26698.88    23   ATTARPUR      1   Sindhupalchok Atarpur     230001 
+ 2  20085611.11  22560.16    23   BANDEGAUN     2   Sindhupalchok Badegau     230002 
+ 3  14874055.65  17567.63    23   BANSBARI      3   Sindhupalchok Bansbari    230003 
+ 4  14974666.14  16157.75    23   BANSKHARKA    4   Sindhupalchok Banskharka  230004 
+ 5  18416527.24  19547.23    23   BARAMCHI      5   Sindhupalchok Baramchi    230005 
+
+Obs zone_name region  hhs2011 pop_2011 male2011 female2011 popden_2011
+
+ 1   Bagmati  Central    464    2182     1034      1148        93.76  
+ 2   Bagmati  Central   1160    5353     2534      2819       266.51  
+ 3   Bagmati  Central   1102    5056     2395      2661       339.93  
+ 4   Bagmati  Central    588    2259     1170      1089       150.85  
+ 5   Bagmati  Central    705    3248     1610      1638       176.37  
+                                           POP       16:48 Wednesday, August 19, 2015    2
+
+                                  The CONTENTS Procedure
+
+
+                    Data Set Name            POP                      
+                    Member Type              DATA                     
+                    Engine                   WPD                      
+                    Created                  19AUG2015:20:48:06       
+                    Last Modified            19AUG2015:20:48:06       
+                    Observations                   3985               
+                    Variables                18                       
+                    Indexes                  0                        
+                    Observation Length       32984                    
+                    Deleted Observations              0               
+                    Data Set Type                                     
+                    Label                                             
+                    Compressed               CHAR                     
+                    Point to Observations    YES                      
+                    Sorted                   YES                      
+                    Data Representation      Little endian, IEEE Unix 
+                    Encoding                 latin1 ISO-8859-1 Western
+
+                            Engine/Host Dependent Information
+
+Data Set Page Size          36864                                                         
+Number of Data Set Pages    2541                                                          
+Data Set Diagnostic Code    0009                                                          
+File Name                   /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS/POP.wpd
+WPD Engine Version          3                                                             
+Large Data Set Support      no                                                            
+Inode Number                44302381                                                      
+Access Permission           rw-rw-r--                                                     
+Owner Name                  michiko                                                       
+File Size (bytes)           93638656                                                      
+
+                               Variables in Creation Order
+
+                 Number    Variable       Type             Len         Pos    
+           ___________________________________________________________________
+                      1    p_code         Char              12              80
+                      2    fid            Char              31              92
+                      3    the_geom       Char           32767             123
+                      4    area           Num                8               0
+                      5    perimeter      Num                8               8
+                      6    dist_id        Num                8              16
+                      7    survey_nam     Char              35           32890
+                      8    vdc_id         Num                8              24
+                      9    district       Char              14           32925
+                     10    vdc_name       Char              24           32939
+                     11    vdc_code       Num                8              32
+                     12    zone_name      Char              10           32963
+                     13    region         Char              11           32973
+                     14    hhs2011        Num                8              40
+                     15    pop_2011       Num                8              48
+                     16    male2011       Num                8              56
+                     17    female2011     Num                8              64
+                     18    popden_2011    Num                8              72
+                                           POP       16:48 Wednesday, August 19, 2015    3
+
+                                  The CONTENTS Procedure
+
+                                     Sort Information
+
+                                 Sorted By       p_code  
+                                 Validated       YES     
+                                 Sort Options    NODUPKEY

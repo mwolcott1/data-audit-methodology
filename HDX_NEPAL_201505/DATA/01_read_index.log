@@ -1,0 +1,90 @@
+1                                     The WPS System 16:46 Wednesday, August 19, 2015     
+
+NOTE: (c) Copyright World Programming Limited 2002-2014.  All rights reserved.
+NOTE: World Programming System 3.01 (03.01.01.00.000000)
+      Licensed to Msight Analytics
+NOTE: This session is executing on the LINUX platform and is running in 64 bit mode
+
+1         libname sas "SAS_DS";
+NOTE: Library sas assigned as follows:
+      Engine:        WPD
+      Physical Name: /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS
+
+2         options linesize = 90 pagesize = 60 error = 1 compress = yes;
+3         
+4         title "INDEX";
+5         
+6         data index;
+7            infile 'RAW/index.csv' dsd dlm = ',' lrecl = 1000 termstr = CRLF firstobs = 2
+7       !  truncover;
+8            input
+9               p_code : $12.
+10              vdc_name : $24.
+11              district : $14.
+12              region : $11.
+13              hazard_intensity
+14              exposure_population
+15              vulnerability_housing
+16              vulnerability_poverty
+17              vulnerability
+18              severity
+19              severity_normalized
+20              severity_category : $11.;
+21           run;
+
+NOTE: The file '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/index.csv' is:
+      File Name=/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/index.csv,
+      Access Permissions=-rw-rw-r--,Number of Links=1,
+      Owner Name=michiko,Group Name=michiko,
+      File Size=341384,Last Modified=May 04 2015,
+      Created=Aug 17 2015,Lrecl=1000, Recfm=V
+
+NOTE: 3985 records were read from file
+      '/u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/RAW/index.csv'
+      The minimum record length was 72
+      The maximum record length was 106
+NOTE: Data set "WORK.index" has 3985 observation(s) and 12 variable(s)
+NOTE: Specifying compression for data set "WORK.index" has decreased its size from 130 to
+      109 pages (a 17% reduction)
+NOTE: The data step took :
+      real time : 0.022
+      cpu time  : 0.022
+
+
+22        
+23        proc print data = index (obs = 5);
+24           run;
+NOTE: 5 observations were read from "WORK.index"
+NOTE: Procedure print step took :
+      real time : 0.003
+      cpu time  : 0.003
+2                                     The WPS System 16:46 Wednesday, August 19, 2015     
+
+
+
+25        
+26        proc sort data = index out = sas.index nodupkey;
+27           by p_code;
+28           run;
+NOTE: 3985 observations were read from "WORK.index"
+NOTE: No observations with duplicate sort keys were found
+NOTE: Data set "SAS.index" has 3985 observation(s) and 12 variable(s)
+NOTE: Specifying compression for data set "SAS.index" has decreased its size from 130 to
+      109 pages (a 17% reduction)
+NOTE: Procedure sort step took :
+      real time : 0.015
+      cpu time  : 0.017
+
+
+29        
+30        proc contents data = sas.index position;
+31           run;
+NOTE: Procedure contents step took :
+      real time : 0.005
+      cpu time  : 0.005
+
+
+
+NOTE: Submitted statements took :
+      real time : 0.064
+      cpu time  : 0.066

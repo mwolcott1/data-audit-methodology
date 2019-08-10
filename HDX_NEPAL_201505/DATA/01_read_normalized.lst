@@ -1,0 +1,112 @@
+                                        NORMALIZED   22:51 Wednesday, August 19, 2015    1
+
+Obs    p_code    vdc_name     district    region  mmi_max mmi_unlog mmi_max_norm pop_2011
+
+ 1  C-BAG-23-001 Atarpur    Sindhupalchok Central   7.80   62483370     1.45       2182  
+ 2  C-BAG-23-002 Badegau    Sindhupalchok Central   7.76   57392463     1.33       5353  
+ 3  C-BAG-23-003 Bansbari   Sindhupalchok Central   7.70   49886033     1.16       5056  
+ 4  C-BAG-23-004 Banskharka Sindhupalchok Central   7.41   25597295     0.59       2259  
+ 5  C-BAG-23-005 Baramchi   Sindhupalchok Central   7.62   41944400     0.97       3248  
+
+Obs pop_2011_norm popden_2011 hse_wall_percent_high_risk hse_wall_percent_high_risk_norm
+
+ 1       .02          93.76              97.84                         9.76             
+ 2       .05         266.51              97.84                         9.76             
+ 3       .05         339.93              97.84                         9.76             
+ 4       .02         150.85              97.84                         9.76             
+ 5       .03         176.37              97.84                         9.76             
+
+Obs hse_roof_percent_high_risk hse_roof_percent_high_risk_norm human_poverty_index
+
+ 1             38.69                         3.94                     38.03       
+ 2             38.69                         3.94                     38.03       
+ 3             38.69                         3.94                     38.03       
+ 4             38.69                         3.94                     38.03       
+ 5             38.69                         3.94                     38.03       
+
+Obs human_poverty_index_norm popden_2011_norm
+
+ 1            6.57                 4.52      
+ 2            6.57                 5.56      
+ 3            6.57                 5.80      
+ 4            6.57                 4.99      
+ 5            6.57                 5.15      
+                                        NORMALIZED   22:51 Wednesday, August 19, 2015    2
+
+                                  The CONTENTS Procedure
+
+
+                    Data Set Name            NORMALIZED               
+                    Member Type              DATA                     
+                    Engine                   WPD                      
+                    Created                  20AUG2015:02:51:14       
+                    Last Modified            20AUG2015:02:51:14       
+                    Observations                   3985               
+                    Variables                17                       
+                    Indexes                  0                        
+                    Observation Length       165                      
+                    Deleted Observations              0               
+                    Data Set Type                                     
+                    Label                                             
+                    Compressed               CHAR                     
+                    Point to Observations    YES                      
+                    Sorted                   YES                      
+                    Data Representation      Little endian, IEEE Unix 
+                    Encoding                 latin1 ISO-8859-1 Western
+
+                            Engine/Host Dependent Information
+
+          Data Set Page Size      
+          Number of Data Set Pages
+          Data Set Diagnostic Code
+          File Name               
+          WPD Engine Version      
+          Large Data Set Support  
+          Inode Number            
+          Access Permission       
+          Owner Name              
+          File Size (bytes)       
+
+                            Engine/Host Dependent Information
+
+          4096                                                                 
+          143                                                                  
+          0009                                                                 
+          /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS/NORMALIZED.wpd
+          3                                                                    
+          no                                                                   
+          44302401                                                             
+          rw-rw-r--                                                            
+          michiko                                                              
+          585728                                                               
+                                        NORMALIZED   22:51 Wednesday, August 19, 2015    3
+
+                                  The CONTENTS Procedure
+
+                               Variables in Creation Order
+
+       Number    Variable                           Type             Len         Pos    
+ _______________________________________________________________________________________
+            1    p_code                             Char              12             104
+            2    vdc_name                           Char              24             116
+            3    district                           Char              14             140
+            4    region                             Char              11             154
+            5    mmi_max                            Num                8               0
+            6    mmi_unlog                          Num                8               8
+            7    mmi_max_norm                       Num                8              16
+            8    pop_2011                           Num                8              24
+            9    pop_2011_norm                      Num                8              32
+           10    popden_2011                        Num                8              40
+           11    hse_wall_percent_high_risk         Num                8              48
+           12    hse_wall_percent_high_risk_norm    Num                8              56
+           13    hse_roof_percent_high_risk         Num                8              64
+           14    hse_roof_percent_high_risk_norm    Num                8              72
+           15    human_poverty_index                Num                8              80
+           16    human_poverty_index_norm           Num                8              88
+           17    popden_2011_norm                   Num                8              96
+
+                                     Sort Information
+
+                                 Sorted By       p_code  
+                                 Validated       YES     
+                                 Sort Options    NODUPKEY

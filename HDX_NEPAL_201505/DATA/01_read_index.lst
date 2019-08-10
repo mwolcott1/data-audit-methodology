@@ -1,0 +1,83 @@
+                                          INDEX      16:46 Wednesday, August 19, 2015    1
+
+  Obs       p_code       vdc_name              district     region     hazard_intensity
+
+   1     C-BAG-27-031    KathmanduN.P.         Kathmandu    Central          2.17      
+   2     C-BAG-25-027    LalitpurN.P.          Lalitpur     Central          1.72      
+   3     C-NAR-35-005    BharatpurN. P.        Chitawan     Central          2.21      
+   4     C-BAG-26-012    MadhyapurThimiN.P.    Bhaktapur    Central          2.45      
+   5     C-BAG-27-028    Jorpati               Kathmandu    Central          1.91      
+
+  Obs    exposure_population    vulnerability_housing    vulnerability_poverty
+
+   1            10.00                    8.86                     1.82        
+   2             2.26                    8.40                     0.82        
+   3             1.47                    5.38                     2.53        
+   4             0.85                    8.23                     0.89        
+   5             0.87                    8.86                     1.82        
+
+  Obs    vulnerability    severity    severity_normalized    severity_category
+
+   1          5.34          4.88            10.0000               Highest     
+   2          4.61          2.62             5.3707               Highest     
+   3          3.96          2.34             4.8083               Highest     
+   4          4.56          2.12             4.3447               Highest     
+   5          5.34          2.07             4.2407               Highest     
+                                          INDEX      16:46 Wednesday, August 19, 2015    2
+
+                                  The CONTENTS Procedure
+
+
+                    Data Set Name            INDEX                    
+                    Member Type              DATA                     
+                    Engine                   WPD                      
+                    Created                  19AUG2015:20:46:07       
+                    Last Modified            19AUG2015:20:46:07       
+                    Observations                   3985               
+                    Variables                12                       
+                    Indexes                  0                        
+                    Observation Length       128                      
+                    Deleted Observations              0               
+                    Data Set Type                                     
+                    Label                                             
+                    Compressed               CHAR                     
+                    Point to Observations    YES                      
+                    Sorted                   YES                      
+                    Data Representation      Little endian, IEEE Unix 
+                    Encoding                 latin1 ISO-8859-1 Western
+
+                            Engine/Host Dependent Information
+
+Data Set Page Size        4096                                                            
+Number of Data Set Pages  109                                                             
+Data Set Diagnostic Code  0009                                                            
+File Name                 /u01/WORKSHOP/DQC_EXAMPLE/HDX_NEPAL_201505/DATA/SAS_DS/INDEX.wpd
+WPD Engine Version        3                                                               
+Large Data Set Support    no                                                              
+Inode Number              44302392                                                        
+Access Permission         rw-rw-r--                                                       
+Owner Name                michiko                                                         
+File Size (bytes)         446464                                                          
+
+                               Variables in Creation Order
+
+            Number    Variable                 Type             Len         Pos    
+      _____________________________________________________________________________
+                 1    p_code                   Char              12              56
+                 2    vdc_name                 Char              24              68
+                 3    district                 Char              14              92
+                 4    region                   Char              11             106
+                 5    hazard_intensity         Num                8               0
+                 6    exposure_population      Num                8               8
+                 7    vulnerability_housing    Num                8              16
+                 8    vulnerability_poverty    Num                8              24
+                 9    vulnerability            Num                8              32
+                10    severity                 Num                8              40
+                11    severity_normalized      Num                8              48
+                12    severity_category        Char              11             117
+
+                                     Sort Information
+
+                                 Sorted By       p_code  
+                                 Validated       YES     
+                                 Sort Options    NODUPKEY

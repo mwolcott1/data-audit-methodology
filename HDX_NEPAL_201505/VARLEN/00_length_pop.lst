@@ -1,0 +1,15 @@
+                                           POP       16:39 Wednesday, August 19, 2015    1
+
+                                   The MEANS Procedure
+
+                               Variable             Maximum
+                               ----------------------------
+                               l_p_code                  12
+                               l_fid                     31
+                               l_the_geom             32767
+                               l_survey_nam              35
+                               l_district                14
+                               l_vdc_name                24
+                               l_zone_name               10
+                               l_region                  11
+                               ----------------------------
